@@ -1,0 +1,123 @@
+
+  <div *ngIf="!loadingTasks">
+    <h1 class="mx-auto text-center"  *ngIf="tasksPlanned.length <= 0 && tasksOngoing.length <= 0 && tasksEnded.length <= 0 "> Vous n'avez pas de tâches, créez-en une avec le formulaire !</h1>
+    <div class="row p-5" cdkDropListGroup>
+      <div
+      cdkDropList
+      #planned="cdkDropList"
+      [cdkDropListData]="tasksPlanned"
+      class="col-4"
+      id="planned"
+      (cdkDropListDropped)="drop($event)">
+        <h1>Planifiée</h1>
+
+        <div class="card" *ngFor="let task of tasksPlanned" cdkDrag>
+            <div class="card" >
+              <div class="card-body" *ngIf="task">
+                <h2 class="card-title">{{task.title}}</h2>
+                <p class="card-text">{{task.content}}</p>
+                <p class="card-text">{{task.date | date:'medium'}}</p>
+                <a class="btn btn-danger" (click)="deleteTask(task._id)">Delete</a>
+                <a class="btn btn-info mx-5" (click)="editTask(task)">Edit</a>
+              </div>
+              </div>
+          </div>
+
+      </div>
+      <div
+      cdkDropList
+      #ongoing="cdkDropList"
+      [cdkDropListData]="tasksOngoing"
+      class="col-4"
+      id="ongoing"
+      (cdkDropListDropped)="drop($event)">
+        <h1>En cours</h1>
+
+        <div class="card" *ngFor="let task of tasksOngoing" cdkDrag>
+
+          <div class="card" >
+              <div class="card-body" *ngIf="task">
+                <h2 class="card-title">{{task.title}}</h2>
+                <p class="card-text">{{task.content}}</p>
+                <p class="card-text">{{task.date | date:'medium'}}</p>
+                <a class="btn btn-danger" (click)="deleteTask(task._id)">Delete</a>
+                <a class="btn btn-info mx-5" (click)="editTask(task)">Edit</a>
+              </div>
+            </div>
+
+          </div>
+
+      </div>
+      <div
+      cdkDropList
+      #ended="cdkDropList"
+      [cdkDropListData]="tasksEnded"
+      class="example-list col-4"
+      id="ended"
+      (cdkDropListDropped)="drop($event)">
+        <h1>Terminée</h1>
+
+        <div class="card" *ngFor="let task of tasksEnded" cdkDrag>
+            <div class="card" >
+
+              <div class="card-body" *ngIf="task">
+                <h2 class="card-title">{{task.title}}</h2>
+                <p class="card-text">{{task.content}}</p>
+                <p class="card-text">{{task.date | date:'medium'}}</p>
+                <a class="btn btn-danger" (click)="deleteTask(task._id)">Delete</a>
+                <a class="btn btn-info mx-5" (click)="editTask(task)">Edit</a>
+              </div>
+
+            </div>
+          </div>
+
+      </div>
+      <form *ngIf="!taskEdit"  [formGroup]="monForm" (ngSubmit)="validForm()" class="mt-5">
+        <h1>Créer une tâche</h1>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Titre</label>
+          <input type="text" class="form-control" formControlName="title" >
+        </div>
+        <div class="form-floating">
+          <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" formControlName="content"></textarea>
+          <label for="floatingTextarea2">Contenu</label>
+        </div>
+        <br>
+        <select class="form-select" aria-label="Default select example" formControlName="status">
+          <option selected value="planned">Planifiée</option>
+          <option value="ongoing">En cours</option>
+          <option value="ended">Terminée</option>
+        </select>
+        <br>
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+      </form>
+
+      <form  *ngIf="taskEdit"[formGroup]="monForm" (ngSubmit)="updateTask()" class="mt-5">
+        <h1>Editer une tâche</h1>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Titre</label>
+          <input type="text" class="form-control" [(ngModel)]="tempContent.title" formControlName="title" >
+        </div>
+        <div class="form-floating">
+          <textarea class="form-control" [(ngModel)]="tempContent.content" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" formControlName="content"></textarea>
+          <label for="floatingTextarea2">Contenu</label>
+        </div>
+        <br>
+        <select class="form-select"  [(ngModel)]="tempContent.status" aria-label="Default select example" formControlName="status">
+          <option selected value="planned">Planifiée</option>
+          <option value="ongoing">En cours</option>
+          <option value="ended">Terminée</option>
+        </select>
+        <br>
+        <button type="submit" class="btn btn-primary">Mettre à jour</button>
+      </form>
+    </div>
+  </div>
+
+  <div *ngIf="loadingTasks">
+    <div class="row loading">
+
+        <mat-spinner class="mx-auto"></mat-spinner>
+
+    </div>
+  </div>

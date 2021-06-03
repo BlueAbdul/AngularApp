@@ -1,0 +1,10 @@
+
+
+.create-account{
+  color:rgb(0, 30, 255);
+  cursor: pointer;
+  &:hover{
+    color: rgb(138, 73, 242);
+    transition-duration: 500ms;
+  }
+}

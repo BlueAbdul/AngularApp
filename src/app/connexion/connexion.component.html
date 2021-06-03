@@ -1,0 +1,38 @@
+
+
+<div class="row ">
+  <div class="col-4 mx-auto">
+    <form [formGroup]="connexionForm" *ngIf="!createAccount" (ngSubmit)="connect()" >
+      <h1>Connexion</h1>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Pseudo</label>
+        <input type="text" class="form-control" formControlName="username" id="exampleInputEmail1" aria-describedby="emailHelp">
+      </div>
+      <p class="text-danger" *ngIf="falseData"> {{errorMessage}} </p>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
+        <input type="password" class="form-control" formControlName="password" id="exampleInputPassword1">
+      </div>
+      <p class="text-danger" *ngIf="falseData"> {{errorMessage}} </p>
+      <button type="submit" class="btn btn-primary">Envoyer</button>
+    </form>
+    <form [formGroup]="connexionForm" *ngIf="createAccount" (ngSubmit)="accountMaker()" >
+      <h1>Inscription</h1>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Pseudo</label>
+        <input type="text" class="form-control" formControlName="username" id="exampleInputEmail1" aria-describedby="emailHelp">
+      </div>
+      <p class="text-danger" *ngIf="falseData"> {{errorMessage}} </p>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
+        <input type="password" class="form-control" formControlName="password" id="exampleInputPassword1">
+      </div>
+      <p class="text-danger" *ngIf="falseData"> {{errorMessage}} </p>
+      <button type="submit" class="btn btn-primary">Envoyer</button>
+    </form>
+    <br>
+    <p *ngIf="!createAccount" class=" create-account" (click) = "showCreate()">Pas de compte ? Créez en un !</p>
+    <p *ngIf="createAccount" class=" create-account" (click) = "showCreate()">Déjà un compte ? Connectez vous ! </p>
+
+  </div>
+</div>

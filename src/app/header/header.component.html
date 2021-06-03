@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark p-2 mb-3">
+  <a class="navbar-brand" [routerLink]="'.'">ollerT</a>
+
+
+  <button class="navbar-toggler" type="button" (click)="isMenuCollapsed = !isMenuCollapsed">
+    &#9776;
+  </button>
+
+
+  <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="" (click)="isMenuCollapsed = true">Home</a>
+      </li>
+      <li class="nav-item" *ngIf="monNom != ''">
+        <a class="nav-link" routerLink="tasks" (click)="isMenuCollapsed = true">Mes tâches</a>
+      </li>
+
+    </ul>
+
+      <ul *ngIf="monNom == ''" class="navbar-nav ms-auto">
+          <li class="nav-item">
+              <a class="nav-link" routerLink="login"  href="#">Se connecter / Créer un compte</a>
+
+          </li>
+      </ul>
+      <ul *ngIf="monNom != ''" class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink ="edit-user">Bonjour {{monNom}}</a>
+        </li>
+          <li class="nav-item">
+              <a class="nav-link text-danger" style="cursor: pointer;" (click)="disconnect()">Déconnexion</a>
+
+          </li>
+      </ul>
+
+  </div>
+</nav>
