@@ -13,6 +13,8 @@ pour éditer le chemin de la DB rendez-vous dans le fichier **.env** a la racine
 
 Le Drag and Drop est disponible sur le tableau des tâches
 
+Un fichier fixtures.js permets de créer directement des données de test, le mot de passe des utilisateurs est visible dans ce fichier ( ils sont cryptés en DB ) 
+
 Liste des commandes : 
 
  **npm run backend** |  **npm run fixtures** | **npm run app:dev** | **npm run app**
