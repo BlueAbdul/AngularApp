@@ -51,9 +51,10 @@ export class TaskListComponent implements OnInit {
       );
     } else {
       let data = event.previousContainer.data[event.previousIndex];
-      console.log(data);
+
       data.status = event.container.element.nativeElement.id
-      console.log(data);
+      this.tempContent = data
+      this.updateTask(data);
       transferArrayItem(
         event.previousContainer.data,
         event.container.data,
@@ -128,8 +129,8 @@ export class TaskListComponent implements OnInit {
     console.log(this.monForm.value);
   }
 
-  async updateTask():Promise<any>{
-    let result = await this.taskService.updateTask(this.monForm.value,this.tempContent._id, localStorage.getItem('tokenUser'))
+  async updateTask(data:any):Promise<any>{
+    let result = await this.taskService.updateTask(data,this.tempContent._id, localStorage.getItem('tokenUser'))
     if(result){
       this.populateTasks(localStorage.getItem('idUser'), localStorage.getItem('tokenUser'))
     }

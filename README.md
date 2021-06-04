@@ -1,27 +1,22 @@
-# AppCours
+# Api Angular Abdelhakim
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.2.
+## Config
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+lancez **npm install**
 
-## Code scaffolding
+Installez le package http server en global **npm install --global http-server**
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+le projet a été réalisé sur une DB locale avec MongoDB
 
-## Build
+pour éditer le chemin de la DB rendez-vous dans le fichier **.env** a la racine du projet pour changer l'adresse de connection
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+ **npm run backend** |  **npm run fixtures** | **npm run app:dev** | **npm run app**
+ ------------ | ------------- | ------------- | ------------- |
+ Lance l'API Express | Lance un fichier qui créé des valeurs de test dans la DB | Lance l'application angular et l'api express dans l'environnement de dev | Lance l'application angular et express dans l'environnement de production
 
-## Running unit tests
+ ### Attention !!!!!!!
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+ Pour utiliser l'API vous devez avoir un token d'accès, ce token est disponible sur la route **/authentification** de l'API
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+ L'app angular gère automatiquement les tokens 

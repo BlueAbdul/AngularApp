@@ -92,7 +92,7 @@
         <button type="submit" class="btn btn-primary">Enregistrer</button>
       </form>
 
-      <form  *ngIf="taskEdit"[formGroup]="monForm" (ngSubmit)="updateTask()" class="mt-5">
+      <form  *ngIf="taskEdit"[formGroup]="monForm" (ngSubmit)="updateTask(monForm.value)" class="mt-5">
         <h1>Editer une tâche</h1>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Titre</label>

@@ -43,7 +43,7 @@ exports.postItem = (req,res) =>{
 
 
 exports.putItem = (req,res) =>{
-  console.log(req.params._id);
+
 Tasks.findOneAndUpdate({_id: req.params.id}, req.body, {new: true, upsert: true, setDefaultsOnInsert: true, runValidators: true}, (err, obj) => {
     if(err) {
       console.log(err);
